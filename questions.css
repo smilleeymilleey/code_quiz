@@ -1,3 +1,7 @@
-body {
-    color: pink;
+.answer {
+    display: block;
+    margin-top: 5%;
+    color: white;
+    background-color: purple;
+    
 }
