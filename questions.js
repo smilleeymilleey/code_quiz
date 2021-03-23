@@ -40,11 +40,17 @@ let addQuestionsAndAnswers = [
 // need to loop through the answers and output on buttons??? 
 
 
-for (let i = 0; i < addQuestionsAndAnswers[answers[0]].length; i++){
-  let codeAnswers = addQuestionsAndAnswers.push(addQuestionsAndAnswers[answers[i]])
-    document.getElementsByClassName("answers").innerHTML = codeAnswers.answers;
+for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++){
+
+    let answerChoices = addQuestionsAndAnswers[numberOfQuestion].answers[i];
 
 
+    let answerChoiceButton = document.createElement("button");
+    answerChoiceButton.innerHTML = answerChoices;
+
+
+
+   document.getElementById("answerChoice__Container").appendChild(answerChoiceButton)
 
 }
 
