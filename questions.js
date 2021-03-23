@@ -1,4 +1,8 @@
 let numberOfQuestion = 0;
+let timerEl = document.getElementById
+('quiz__Time');
+
+let timeLeft = 30;
 
 function test() {
 
@@ -32,17 +36,37 @@ let addQuestionsAndAnswers = [
 
 
 // looping through list of questions and outputting onto the h1 
-
-
+function countdown() {
+    
+  
+    
+    var timeInterval = setInterval(function () {
+      if (timeLeft === 0) {
+        timerEl.textContent = "";
+        clearInterval(timeInterval)
+        displayMessage();
+       } else {
+  
+        timerEl.textContent = "Time: " + timeLeft;
+          timeLeft--; 
+        }
+      
+  
+   }, 1000);
+  }
+  
+countdown();
 
 // need to loop through the answers and output on buttons??? 
+questions();
+function questions() {
+ 
 
 
 for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++){
     
-
-    
-
+    document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
+ 
     let answerChoices = addQuestionsAndAnswers[numberOfQuestion].answers[i];
     let answerChoiceButton = document.createElement("button");
     
@@ -51,15 +75,16 @@ for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++
     
     answerChoiceButton.addEventListener("click", function() {
         if (addQuestionsAndAnswers[numberOfQuestion].correctAnswer === i) {
-            alert("correct answer");
+           addQuestionsAndAnswers++;
+           document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
+ 
         }
         
     });
     
     
     
-     document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
-
+    
 }
 
 // add timer to the page 
@@ -67,7 +92,7 @@ for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++
 
 
 
-
+}
 };
 
 test();
