@@ -33,31 +33,39 @@ let addQuestionsAndAnswers = [
 
 // looping through list of questions and outputting onto the h1 
 
- document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
-
 
 
 // need to loop through the answers and output on buttons??? 
 
 
 for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++){
+    
+
+    
 
     let answerChoices = addQuestionsAndAnswers[numberOfQuestion].answers[i];
-
-
     let answerChoiceButton = document.createElement("button");
+    
     answerChoiceButton.innerHTML = answerChoices;
-
-
-
-   document.getElementById("answerChoice__Container").appendChild(answerChoiceButton)
+    document.getElementById("answerChoice__Container").appendChild(answerChoiceButton)
+    
+    answerChoiceButton.addEventListener("click", function() {
+        if (addQuestionsAndAnswers[numberOfQuestion].correctAnswer === i) {
+            alert("correct answer");
+        }
+        
+    });
+    
+    
+    
+     document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
 
 }
 
 // add timer to the page 
 
 
-  
+
 
 
 };
