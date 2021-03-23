@@ -1,3 +1,5 @@
+let numberOfQuestion = 0;
+
 function test() {
 
 let addQuestionsAndAnswers = [
@@ -30,11 +32,10 @@ let addQuestionsAndAnswers = [
 
 
 // looping through list of questions and outputting onto the h1 
-for(let i =0; i < addQuestionsAndAnswers.length; i++){
-    let questionList = addQuestionsAndAnswers[i]
-     document.getElementById("question").innerHTML = questionList.question;
 
-}
+ document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
+
+
 
 // need to loop through the answers and output on buttons??? 
 
