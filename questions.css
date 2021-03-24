@@ -5,3 +5,15 @@
     background-color: purple;
     
 }
+
+.answerChoice__Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: purple;
+    border-color: purple;
+    color: white;
+}

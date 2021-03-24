@@ -1,6 +1,7 @@
 let numberOfQuestion = 0;
-let timerEl = document.getElementById
-('quiz__Time');
+let timerEl = document.getElementById('quiz__Time');
+let answerChoiceContainer = document.getElementById
+("answerChoice__Container")
 
 let timeLeft = 30;
 
@@ -33,66 +34,77 @@ let addQuestionsAndAnswers = [
         "correctAnswer": 3
     }
  ]
-
-
-// looping through list of questions and outputting onto the h1 
-function countdown() {
-    
-  
-    
-    var timeInterval = setInterval(function () {
+ 
+ 
+ 
+ function countdown() {
+     
+     var timeInterval = setInterval(function () {
       if (timeLeft === 0) {
-        timerEl.textContent = "";
-        clearInterval(timeInterval)
+          timerEl.textContent = "";
+          clearInterval(timeInterval)
         displayMessage();
-       } else {
+    }
+    
+    else {
   
         timerEl.textContent = "Time: " + timeLeft;
-          timeLeft--; 
+        timeLeft--; 
         }
-      
+        
   
-   }, 1000);
+    }, 1000);
   }
   
 countdown();
-
-// need to loop through the answers and output on buttons??? 
-questions();
-function questions() {
  
+// increments the questions 
+showQuestions(numberOfQuestion);
+
+answerChoiceContainer.addEventListener("click", function(){
+    numberOfQuestion++
+    showQuestions(numberOfQuestion)
+
+} )
 
 
-for (let i = 0; i < addQuestionsAndAnswers[numberOfQuestion].answers.length; i++){
+function showQuestions(currentQuestion) {
     
-    document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
- 
-    let answerChoices = addQuestionsAndAnswers[numberOfQuestion].answers[i];
-    let answerChoiceButton = document.createElement("button");
-    
-    answerChoiceButton.innerHTML = answerChoices;
-    document.getElementById("answerChoice__Container").appendChild(answerChoiceButton)
-    
-    answerChoiceButton.addEventListener("click", function() {
-        if (addQuestionsAndAnswers[numberOfQuestion].correctAnswer === i) {
-           addQuestionsAndAnswers++;
-           document.getElementById("question").innerHTML = addQuestionsAndAnswers[numberOfQuestion].question;
- 
-        }
-        
-    });
-    
-    
+ answerChoiceContainer.innerHTML = "" 
+ console.log("reach function")
+ console.log(addQuestionsAndAnswers[0].question)
+ console.log(currentQuestion)
+ document.getElementById("question").innerHTML = addQuestionsAndAnswers[currentQuestion].question;
+  
+
+
+
+ for (let i = 0; i < addQuestionsAndAnswers[currentQuestion].answers.length; i++){
+     let answerChoice = addQuestionsAndAnswers[currentQuestion].answers[i];
+
+         let answerChoiceButton = document.createElement("button");
+  answerChoiceButton.innerHTML = answerChoice;
+
+  answerChoiceContainer.appendChild(answerChoiceButton)
+
+
+//   let rightAnswer = addQuestionsAndAnswers[currentQuestion].correctAnswer;
+//     function event(event){
+//     if (event.target != rightAnswer ) {
+//         alert("wrong!")
+//     }
+//     }
+ }
+
     
     
 }
 
-// add timer to the page 
 
 
 
 
-}
+
 };
 
 test();
