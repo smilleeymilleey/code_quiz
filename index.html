@@ -1,49 +1,43 @@
-<!-- add intro with tite and paragraph undernearth with a start button -->
-
-
-
-
-
-<!-- add a title -->
-
-<!-- add a space for the timer  -->
-
-<!-- give a space for questions to be  dynamically added -->
-
-<!-- give a space for answers to be dynamically added and clicked -->
-
-<!-- add submit button -->
-
-<!-- add output that says "WRONG" or "CORRECT" when questions answered incorectly -->
-
-
-<!-- highscore list/ leaderboard -->
-<!-- score  -->
-<!-- input initials & - clean or go back buttons -->
-
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-<Link rel="stylesheet" href="style.css"></Link>
-<title>Coding Quiz Challenge</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Quiz API</title>
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
-
 <body>
+   <!-- welcome page -->
+    <div id="time">time: 0</div>
+    <div id="quiz-section">
+    <div id="prompt">
+        <h1>Coding Quiz</h1>
+        <p>When the quiz starts you will be presented with a javascript quiz! If you answer a question correct- you can move on! If you answer incorrectly- 10 seconds will be subtracted from the clock.
+        </p>
+    </div>
    
-    <p id="welcome__Highscore">View Highscores</p>
-    <div id="welcome__Container">
-        <p id="welcome__Time">Time:</p>
-        <h1 id= "welcome__Title">Coding Quiz Challenge</h1>   
-        <p id="welcome__P">Hey there! This is the coding quiz challenge. When you click "start" a timer will begin... BUT, you only loose seconds when you get an answer WRONG. Your end time is your score! Press start to begin.</p>
-</div>
+    <!-- button has even listener to navigate to next section -->
+    <button id="start">Start Quiz</button>
 
-  <a href="questions.html"><button id="start__Button">Start Quiz</button></a>
+    <!-- code quiz section -->
+    <div id="questions"></div>
+    <ul id="choices">
+        <button id="A"></button>
+        <button id="B"></button>
+        <button id="C"></button>
+        <button id="D"></button>
+    </ul>
 
+    <H1 id="final-score">Your Score: </H1>
+    <form id="final-score-form">
+        <label>innitials</label>
+        <input type="text"></label>
+        <input type="submit"></label>
+    </form>
 </div>
-<script src="script.js"></script>
+  
+
+<script src="test.js"></script>
 </body>
 
 </html>
