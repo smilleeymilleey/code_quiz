@@ -1,0 +1,19 @@
+#prompt h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+
+}
+
+#prompt p {
+    text-align: center;
+}
+
+#start {
+    display: flex;
+    margin: auto;
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 15%;
+    padding: 5%;
+
+}
