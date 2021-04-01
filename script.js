@@ -6,12 +6,19 @@ var interval = 0;
 var secondsLeft = 60
 var currentTime = document.querySelector("#time");
 
-
+var score = 0;
+var penalty = 10;
 var question = document.querySelector("#questions");
 var choice1El = document.querySelector("#A");
 var choice2El = document.querySelector("#B");
 var choice3El = document.querySelector("#C")
 var choice4El = document.querySelector("#D");
+
+var finalScore = document.querySelector("#final-score")
+finalScore.style.display = "none";
+var finalScoreBoard = document.querySelector("#final-score-form")
+finalScoreBoard.style.display = "none"
+
 
 choice1El.style.display = "none";
 choice2El.style.display = "none";
@@ -115,6 +122,7 @@ function render() {
             if (secondsLeft > 10) {
                 choice1El.onclick = function () {
                     if (questionArr[index].choice1 == answer) {
+                        score++
                         index++
                         render()
                     } else {
@@ -124,6 +132,7 @@ function render() {
     
                 choice2El.onclick = function () {
                     if (questionArr[index].choice2 == answer) {
+                        score++
                         index++
                         render()
                     } else {
@@ -133,6 +142,7 @@ function render() {
     
                 choice3El.onclick = function () {
                     if (questionArr[index].choice3 == answer) {
+                        score++
                         index++
                         render()
                     } else {
@@ -142,6 +152,7 @@ function render() {
     
                 choice4El.onclick = function () {
                     if (questionArr[index].choice4 == answer) {
+                        score++
                         index++
                         render()
                     } else {
@@ -151,9 +162,23 @@ function render() {
             } 
         } else {
            console.log('Great Job!')
+           currentTime = 0
+           finalScore.append(score)
+           finish()
         }
     }
+    function finish() {
+        question.style.display = "none";
+        choice1El.style.display = "none";
+        choice2El.style.display = "none";
+        choice3El.style.display = "none";
+        choice4El.style.display = "none";
+        finalScore.style.display = "table-row";
+        finalScoreBoard.style.display = "table-row"
     
+        //show finalscore prompt
+        //make enter button redirect/ reset the quiz
+    }
             
 
 
