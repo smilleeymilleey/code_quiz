@@ -1,30 +1,22 @@
-// variables used to start the quiz
 var startButton = document.querySelector("#start");
 startButton.addEventListener("click", startQuiz);
+var prompt = document.querySelector("#prompt")
 
-// timer variables
 var interval = 0;
 var secondsLeft = 60
 var currentTime = document.querySelector("#time");
 
-// question array variables for conditional
 
-var questionArrayay = [q1, q2, q3, q4, q5];
-var index = 0
-
-// answer variables use these for contitional!! 
 var question = document.querySelector("#questions");
 var choice1El = document.querySelector("#A");
 var choice2El = document.querySelector("#B");
 var choice3El = document.querySelector("#C")
 var choice4El = document.querySelector("#D");
 
-// hide from html 
 choice1El.style.display = "none";
 choice2El.style.display = "none";
 choice3El.style.display = "none";
 choice4El.style.display = "none";
-
 
 
 //questions
@@ -73,65 +65,102 @@ var q5 = {
     answer: "Document Object Model"
 }
 
+var questionArr = [q1, q2, q3, q4, q5];
+var index = 0
 
+// Start Quiz sets time
+function startQuiz() {
+    startButton.style.display = "none"
+    prompt.style.display = "none"
+    count();
+    render();
+}
+
+
+// timer 
+function count() {
+    if (interval === 0) {
+        interval = setInterval(function () {
+            secondsLeft--;
+            currentTime.textContent = "Time:" + secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(interval);
+                finish();
+                currentTime.textContent = "Time's Up";
+            }
+        }, 1000);
+    }
+}
 
 
 function render() {
     //allows you to show question and choices (they were originally set to hidden before this function is ran)
-    question.style.display = "block";
-    choice1El.style.display = "table-row";
-    choice2El.style.display = "table-row";
-    choice3El.style.display = "table-row";
-    choice4El.style.display = "table-row";
-
-    //check if index is < questionArray & turns to text
-    if (index < questionArrayay.length) {
-        question.textContent = questionArray[index].question;
-        choice1El.textContent = questionArray[index].choice1;
-        choice2El.textContent = questionArray[index].choice2;
-        choice3El.textContent = questionArray[index].choice3;
-        choice4El.textContent = questionArray[index].choice4;
-        answer = questionArray[index].answer
-
-    // checks for answer & if it is what is clicked == answer then it will move to next question
-
-
-        if (secondsLeft > 10) {
-            choice1El.onclick = function () {
-                if (questionArray[index].choice1 == answer) {
-                    
-                    index++
-                    render()
-                } 
-            }
-
-            choice2El.onclick = function () {
-                if (questionArray[index].choice2 == answer) {
-                   
-                    index++
-                    render()
-                } 
-            }
-
-            choice3El.onclick = function () {
-                if (questionArray[index].choice3 == answer) {
-                    
-                    index++
-                    render()
-                }
-            }
-
-            choice4El.onclick = function () {
-                if (questionArray[index].choice4 == answer) {
-                    
-                    index++
-                    render()
-               
-            }
-        } 
-    } else {
-       console.log('you made it through the quiz!')
+        //allows you to show question and choices
+        question.style.display = "block";
+        choice1El.style.display = "table-row";
+        choice2El.style.display = "table-row";
+        choice3El.style.display = "table-row";
+        choice4El.style.display = "table-row";
     
-       
+        //if correct answer is clicked and there are questions left = move on to the next question. if selected wrong answer decrement the time. 
+        if (index < questionArr.length) {
+            question.textContent = questionArr[index].question;
+            choice1El.textContent = questionArr[index].choice1;
+            choice2El.textContent = questionArr[index].choice2;
+            choice3El.textContent = questionArr[index].choice3;
+            choice4El.textContent = questionArr[index].choice4;
+            answer = questionArr[index].answer
+    
+            if (secondsLeft > 10) {
+                choice1El.onclick = function () {
+                    if (questionArr[index].choice1 == answer) {
+                        index++
+                        render()
+                    } else {
+                        secondsLeft = secondsLeft - 10
+                    }
+                }
+    
+                choice2El.onclick = function () {
+                    if (questionArr[index].choice2 == answer) {
+                        index++
+                        render()
+                    } else {
+                        secondsLeft = secondsLeft - 10
+                    }
+                }
+    
+                choice3El.onclick = function () {
+                    if (questionArr[index].choice3 == answer) {
+                        index++
+                        render()
+                    } else {
+                        secondsLeft = secondsLeft - 10
+                    }
+                }
+    
+                choice4El.onclick = function () {
+                    if (questionArr[index].choice4 == answer) {
+                        index++
+                        render()
+                    } else {
+                        secondsLeft = secondsLeft - 10
+                    }
+                }
+            } 
+        } else {
+           console.log('Great Job!')
+        }
     }
-}
+    
+            
+
+
+
+
+
+
+
+  
+
