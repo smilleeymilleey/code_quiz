@@ -205,12 +205,34 @@ function render() {
         localStorage.setItem('leaderBoardScores', JSON.stringify(highScore))
  
         let displayInitials = document.createElement("p");
-        let lBContainer = document.getElementById("LeaderBoard");
+        let lBContainer = document.getElementById("leaderBoardDiv");
         lBContainer.append(displayInitials); 
         displayInitials.append(initials);
-        displayInitials.append(score);
+        displayInitials.append(score)
+
+        showLeaderBoard();
     }
 
     function showLeaderBoard() {
+        let leaderBoardDiv = document.getElementById("leaderBoardDiv");
+        let leaderBoardHeader = document.createElement("h1");
+        leaderBoardHeader.textContent = "Leader Board"
 
+        leaderBoardDiv.append(leaderBoardHeader);
+
+     let highScore = JSON.parse(localStorage.getItem("leaderBoardScores"))|| [];
+        for (let i = 0; i < highScore.length; i++) {
+         const allScores = highScore[i];
+         console.log(allScores)
+         let displayInitials = document.createElement("p");
+         let lBContainer = document.getElementById("leaderBoardDiv");
+         lBContainer.append(displayInitials); 
+         displayInitials.append(allScores.initials + " - " + allScores.score);
+         
+
+         
+        
+         
+        }
     }
+    
