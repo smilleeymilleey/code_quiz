@@ -93,6 +93,7 @@ function count() {
 
             if (secondsLeft <= 0) {
                 clearInterval(interval);
+                finalScore.append(score)
                 finish();
                 currentTime.textContent = "Time's Up";
             }
@@ -145,8 +146,8 @@ function render() {
                         score++
                         index++
                         render()
-                    } else {
-                        secondsLeft = secondsLeft - 10
+                    }else {
+                    secondsLeft = secondsLeft - 10  
                     }
                 }
     
@@ -176,16 +177,40 @@ function render() {
         finalScore.style.display = "table-row";
         finalScoreBoard.style.display = "table-row"
     
-        //show finalscore prompt
+        //show finalcore prompt
         //make enter button redirect/ reset the quiz
     }
-            
 
+    // localStorage.set('nameToRetrieveLater', JSON.stringify (yourObject))
+ 
+    // Then you need something to hold the retrieved value
+ 
+    // let highScore = localStorage.get(JSON.parse ( 'nameToRetrieveLater'))
 
+    let subBtn = document.getElementById("saveInitials")
+    subBtn.addEventListener("click", saveScore)
 
+    
+    function saveScore() {
+        console.log("its running")
+        let initials = document.getElementById("inputInitials").value;
+        console.log(initials)
+        let highScore = JSON.parse(localStorage.getItem("leaderBoardScores")) || [];
+        console.log(highScore)
+        highScore.push({
 
+           initials: initials,
+           score: score,
+        });
+        localStorage.setItem('leaderBoardScores', JSON.stringify(highScore))
+ 
+        let displayInitials = document.createElement("p");
+        let lBContainer = document.getElementById("LeaderBoard");
+        lBContainer.append(displayInitials); 
+        displayInitials.append(initials);
+        displayInitials.append(score);
+    }
 
+    function showLeaderBoard() {
 
-
-  
-
+    }
